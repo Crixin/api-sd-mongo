@@ -11,9 +11,8 @@ module.exports = {
     async create(req, res){
         const {name, email, password} = req.body;
 
-        try {
     
-            if (await User.findOne({email}))
+            if (await User.findOne({where: {email} }))
                 return res.send(400).send({error: 'Usuário já existe'})
     
             const user = await User.create({
@@ -23,8 +22,6 @@ module.exports = {
             });
     
             return res.send({user});
-        } catch (err) {
-            return res.status(400).send({error: 'Falha ao registrar'});
-        }
+     
     }
 };
