@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const autoIncrement = require('mongoose-auto-increment');
 
 const bcrypt = require('bcryptjs');
 
@@ -18,7 +19,7 @@ const UserSchema = new mongoose.Schema({
         required: true,
         select: false,
     },
-    createdAt: {
+    createdAt: {    
         type: Date,
         default: Date.now,
     }, */
@@ -37,4 +38,6 @@ UserSchema.pre('save', async function(next){
     next();
 });
 
+autoIncrement.initialize(mongoose.connection);
+UserSchema.plugin(autoIncrement.plugin, 'Counter');
 module.exports = mongoose.model('User', UserSchema)

@@ -12,8 +12,8 @@ module.exports = {
         const {name, email, password} = req.body;
 
     
-            if (await User.findOne({where: {email} }))
-                return res.send(400).send({error: 'Usuário já existe'})
+            if (await User.findOne({email: email }))
+                return res.status(400).send({error: 'Usuário já existe'})
     
             const user = await User.create({
                 name,
