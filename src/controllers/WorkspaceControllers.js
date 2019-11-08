@@ -1,5 +1,4 @@
 const Workspace = require('../models/Workspace');
-const ObjectId = require('mongodb').ObjectId; 
 
 module.exports = {
 
@@ -19,6 +18,8 @@ module.exports = {
 
         const workspace = await Workspace.create({
             name,
+        }).catch( err =>{
+            return res.status(400).send({error: err})
         });
 
         return res.send({workspace});

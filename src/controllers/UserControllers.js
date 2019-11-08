@@ -19,6 +19,8 @@ module.exports = {
                 name,
                 email,
                 password,
+            }).catch( err =>{
+                return res.status(400).send({error: err})
             });
     
             return res.send({user});
