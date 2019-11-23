@@ -2,11 +2,10 @@ const mongoose = require('mongoose');
 const autoIncrement = require('mongoose-auto-increment');
 
 const EventoSchema = new mongoose.Schema({
-    user_id: {type: Number, required: true},
-    descricao: {type: String, required: true},
-    workspace_id: {type: Number, required: true},
-    dt_hr_inicial: {type: Date, required: true},
-    dt_hr_final: {type: Date, required: true},
+    origem: {type: String},
+    destino: {type: String},
+    valor: {type: String},
+    traidor: {type: String},
 }, {
     timestamps: true,
 });
